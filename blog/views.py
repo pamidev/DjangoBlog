@@ -46,6 +46,6 @@ def error_404_view(request, exception):
     return render(request, 'blog/404.html', data)
 
 
-def error_500_view(request, exception):
+def error_500_view(request):
     data = {"name": 'Blog dla programistów'}
     return render(request, 'blog/500.html', data)
