@@ -1,14 +1,18 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
+    <div class="post" xmlns="http://www.w3.org/1999/xhtml">
         {%  if post.publish_date %}
         <div class="date">
             {{  post.published_date }}
         </div>
         {%  endif %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
         <h2>{{  post.title }}</h2>
         <img src="{{ post.image.url }}" alt="Image" width="250px">
         <p>{{ post.text|linebreaksbr }}</p>
+        <br><br>
     </div>
 {%  endblock %}
