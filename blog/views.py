@@ -1,19 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from .forms import ImgForm
-from django.views.generic import DetailView
-from django.views.generic import TemplateView
+from .forms import PostForm
+from django.views.generic import DetailView, TemplateView
 
 
 class Image(TemplateView):
-    form = ImgForm
+    form = PostForm
     template_name = 'blog/image.html'
 
     def post(self, request, *args, **kwargs):
-        form = ImgForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save()
             return HttpResponseRedirect(reverse_lazy('image_display', kwargs={'pk': obj.id}))
@@ -49,3 +48,32 @@ def error_404_view(request, exception):
 def error_500_view(request):
     data = {"name": 'Blog dla programistów'}
     return render(request, 'blog/500.html', data)
+
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
