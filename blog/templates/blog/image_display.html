@@ -1,3 +1,9 @@
 {%  load static %}
 
-<img src="{{ post.image.url }}" alt="Image" width="250px">
+<html>
+<body>
+    <img class="img" src="{{ post.image.url }}" alt="Obrazek" width="250">
+    <br>
+    <a href="{% url 'home' %}">Go Back!!!</a>
+</body>
+</html>
