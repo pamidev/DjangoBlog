@@ -5,15 +5,35 @@
         <title>Blog dla programistów</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <script src="https://use.fontawesome.com/451851369b.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-    <div class="page-header">
-        {%  if user.is_authenticated %}
-        <a href="{%  url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {%  endif %}
-        <h1><a href="/">Blog dla programistów</a></h1>
-    </div>
+    <nav class="navbar navbar-light" style="background-color: #061A40;">
+        <a class="top-menu" href="/">Facebook</a>
+        <a class="top-menu" href="/">Twitter</a>
+        <a class="top-menu" href="/">Youtube</a>
+        <div class="plus">
+            {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        </div>
+    </nav>
+        <div class="all">
+    <nav class="navbar navbar-light bg-light">
+          <div class="page-header">
+              <img src="/media/images/logo.png" height="5%">
+              <a class="nav-link" href="/"><b>Strona główna</b></a>
+              <a class="nav-link" href="#"><b>Najnowsze artykuły</b></a>
+              <a class="nav-link" href="#"><b>Pisz dla nas</b></a>
+              <a class="nav-link" href="#"><b>Kontakt</b></a>
+          </div>
+        <div class="gora">
+            <p class="title"><b>Blog dla programisty</b></p>
+            <img class="baner" src="/media/images/baner.jpg"><br/><br/><br/>
+        </div>
+    </nav>
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -21,6 +41,58 @@
                 {% endblock %}
             </div>
         </div>
+    </div>
+    </div>
+    <div class="stopka">
+    <footer class="site-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <h6><b>O nas</b></h6>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, magna at euismod semper, turpis elit vulputate velit, consequat ultrices augue odio et libero. Pellentesque ac nulla elit. Aliquam suscipit nisl nunc, at tempus mi hendrerit at. Nullam tincidunt nisi sit amet orci mollis dictum. Nullam sollicitudin faucibus ante tempus pellentesque. Etiam euismod elit lacinia erat consequat vehicula. Aliquam id eros fermentum, aliquet arcu eu, porta orci. Nam lorem ipsum, convallis et condimentum feugiat, viverra at risus.</p>
+              </div>
+              <div class="col-xs-6 col-md-2">
+                <h6><b>Kategorie</b></h6>
+                <ul class="footer-links">
+                  <li><a href="/">C</a></li>
+                  <li><a href="/">UI Design</a></li>
+                  <li><a href="/">PHP</a></li>
+                  <li><a href="/">Java</a></li>
+                  <li><a href="/">Android</a></li>
+                  <li><a href="/">Python</a></li>
+                </ul>
+              </div>
+              <div class="col-xs-6 col-md-2">
+                <h6><b>Szybkie linki</b></h6>
+                <ul class="footer-links">
+                  <li><a href="/">O nas</a></li>
+                  <li><a href="/">Kontakt</a></li>
+                  <li><a href="/">Współpraca</a></li>
+                  <li><a href="/">Ciasteczka</a></li>
+                  <li><a href="/">Mapa strony</a></li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by
+                <a href="#">Paweł Miduch</a>.
+                </p>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                  <li><a class="facebook" href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+                  <li><a class="twitter" href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+                  <li><a class="dribbble" href="#"><i class="fa fa-dribbble fa-2x"></i></a></li>
+                  <li><a class="linkedin" href="#"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </footer>
     </div>
     </body>
 </html>

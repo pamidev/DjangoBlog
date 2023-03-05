@@ -1,20 +1,19 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post" xmlns="http://www.w3.org/1999/xhtml">
-        {%  if post.publish_date %}
-        <div class="date">
-            {{  post.published_date }}
-        </div>
-        {%  endif %}
-        {%  if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-            <span class="glyphicon glyphicon-pencil"></span>
-        </a>
-        {%  endif %}
-        <h2>{{  post.title }}</h2>
-        <img src="{{ post.image.url }}" alt="Image" width="250px">
+<div class="post" xmlns="http://www.w3.org/1999/html">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+            <span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h2><b>{{ post.title }}</b></h2>
+        <img class="img" src="{{ post.image.url }}" alt="Obrazek" width="300px">
         <p>{{ post.text|linebreaksbr }}</p>
         <br><br>
-    </div>
-{%  endblock %}
+</div>
+{% endblock %}
