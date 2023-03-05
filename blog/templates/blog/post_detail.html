@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="post" xmlns="http://www.w3.org/1999/html">
-        {% if post.published_date %}
+        {% if post.publish_date %}
             <div class="date">
-                {{ post.published_date }}
+                {{ post.publish_date }}
             </div>
         {% endif %}
         {% if user.is_authenticated %}

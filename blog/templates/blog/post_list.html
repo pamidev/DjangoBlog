@@ -5,7 +5,7 @@
     <div class="post">
         <img src="{{ post.image.url }}" class="img" alt="Obrazek" width="40%"><br>
         <div class="data">
-            <p>opublikowany: {{ post.published_date }}</p>
+            <p>opublikowany: {{ post.publish_date }}</p>
         </div>
         <h2><b><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></b></h2>
         <br>
